@@ -1,10 +1,10 @@
 {
-  "name": "zk-starter",
+  "name": "ketl-attestations-verifier",
   "version": "0.0.1",
-  "description": "ZK project starter",
+  "description": "Ketl verifier for SealCred attestations ",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/backmeupplz/zk-starter"
+    "url": "git+https://github.com/BigWhaleLabs/ketl-attestations-verifier"
   },
   "license": "MIT",
   "np": {
