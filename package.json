@@ -29,9 +29,7 @@
     "release": "np",
     "prepublishOnly": "yarn build && yarn tsc",
     "generate-inputs": "ts-node scripts/generate-inputs.ts",
-    "compile": "yarn compile-eddsa && yarn compile-factor",
-    "compile-eddsa": "scripts/compile-circuit.sh EdDSAChecker eddsa",
-    "compile-factor": "scripts/compile-circuit.sh FactorChecker factor"
+    "compile": "scripts/compile-circuit.sh AttestationChecker attestation"
   },
   "devDependencies": {
     "@big-whale-labs/versioned-contract": "^1.0.2",
@@ -48,6 +46,7 @@
     "@types/node": "^18.15.11",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",
+    "@zk-kit/incremental-merkle-tree": "^1.0.0",
     "chai": "^4.3.7",
     "circom_tester": "^0.0.19",
     "circomlib": "^2.0.5",
