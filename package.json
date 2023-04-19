@@ -1,5 +1,5 @@
 {
-  "name": "ketl-attestations-verifier",
+  "name": "@big-whale-labs/ketl-attestations-verifier",
   "version": "0.0.1",
   "description": "Ketl verifier for SealCred attestations ",
   "repository": {
