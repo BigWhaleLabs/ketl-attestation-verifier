@@ -35,4 +35,18 @@ describe('AttestationCheckerVerifier contract', function () {
 
     expect(await this.contract.verifyProof(a, b, c, input)).to.be.equal(false)
   })
+
+  it('should fail to verify with wrong nullifier', async function () {
+    const { a, b, c, input } = {
+      ...this.proof,
+      input: [
+        this.proof.input[0],
+        this.proof.input[1],
+        this.proof.input[2],
+        '0x0000000000000000000000000000000000000000000000000000000000010f2d',
+      ],
+    } as Proof
+
+    expect(await this.contract.verifyProof(a, b, c, input)).to.be.equal(false)
+  })
 })
