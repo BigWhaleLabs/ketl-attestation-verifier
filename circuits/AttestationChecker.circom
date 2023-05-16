@@ -6,8 +6,6 @@ include "./templates/MerkleTreeCheckerPoseidon.circom";
 template AttestationChecker() {
   var attestationMessageLength = 2; // [attestation type, attestation]
   signal input attestationMessage[attestationMessageLength];
-  // Export attestation type
-  signal output attestationType <== attestationMessage[0];
   // Check if the EdDSA signature is valid
   signal input attestationPubKeyX;
   signal input attestationPubKeyY;
@@ -37,8 +35,23 @@ template AttestationChecker() {
   }
 
   signal output merkleRoot <== merkleTreeChecker.root;
-  // Export a nullifier so that the proof can be used only once
-  signal input nullifier;
+  // Entangle the password
+  signal input password;
+
+  component entanglementHasher = Poseidon(1 + attestationMessageLength);
+  entanglementHasher.inputs[0] <== password;
+  for (var i = 0; i < attestationMessageLength; i++) {
+    entanglementHasher.inputs[1 + i] <== attestationMessage[i];
+  }
+
+  signal output entanglement <== entanglementHasher.out;
+  // Output hashed attestation
+  component attestationHasher = Poseidon(attestationMessageLength);
+  for (var i = 0; i < attestationMessageLength; i++) {
+    attestationHasher.inputs[i] <== attestationMessage[i];
+  }
+
+  signal output attestationHash <== attestationHasher.out;
 }
 
-component main{public [attestationPubKeyX, nullifier]} = AttestationChecker();
+component main{public [attestationPubKeyX]} = AttestationChecker();
