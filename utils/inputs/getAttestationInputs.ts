@@ -11,6 +11,6 @@ export default async function (id = ids[0], allIds = ids) {
     pathElements: merkleProof.siblings.map(([s]) =>
       BigNumber.from(s).toHexString()
     ),
-    nullifier: 69420,
+    password: 69420,
   }
 }

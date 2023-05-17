@@ -19,6 +19,7 @@ artifacts
 # PoT files
 pot/*
 !pot/pot14_final.ptau
+!pot/pot13_final.ptau
 
 # yarn
 .pnp.*

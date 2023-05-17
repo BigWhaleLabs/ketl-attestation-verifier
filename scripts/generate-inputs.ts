@@ -5,6 +5,7 @@ import { resolve } from 'path'
 import { writeFileSync } from 'fs'
 import eddsaPrivateKeyBytes from '../utils/eddsa/eddsaPrivateKeyBytes'
 import getAttestationInputs from '../utils/inputs/getAttestationInputs'
+import getPasswordInputs from '../utils/inputs/getPasswordInputs'
 
 void (async () => {
   const eddsa = await buildEddsa()
@@ -15,6 +16,7 @@ void (async () => {
   )
   const inputs = {
     attestation: getAttestationInputs,
+    password: getPasswordInputs,
   }
   for (const [name, fn] of Object.entries(inputs)) {
     const inputs = await fn()
