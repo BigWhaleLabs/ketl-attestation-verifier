@@ -34,6 +34,8 @@ template AttestationChecker() {
     merkleTreeChecker.pathIndices[i] <== pathIndices[i];
   }
 
+  signal output attestationType <== attestationMessage[0];
+
   signal output merkleRoot <== merkleTreeChecker.root;
   // Entangle the password
   signal input password;
