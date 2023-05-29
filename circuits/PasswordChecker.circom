@@ -19,10 +19,11 @@ template PasswordChecker() {
 
   signal entanglement <== entanglementHasher.out;
   // Export the nullifier
-  component nullifierHasher = Poseidon(3);
+  component nullifierHasher = Poseidon(4);
   nullifierHasher.inputs[0] <== password;
-  nullifierHasher.inputs[1] <== 69;
-  nullifierHasher.inputs[2] <== 420;
+  nullifierHasher.inputs[1] <== attestationMessage[1];
+  nullifierHasher.inputs[2] <== 69;
+  nullifierHasher.inputs[3] <== 420;
   signal output nullifier <== nullifierHasher.out;
   // Check Merkle proof
   var levels = 20;
